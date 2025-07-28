@@ -1,2 +1,2 @@
 # SoCoBio
-Project Folders for my internship at University of Sussex for SoCoBio
+For my internship at University of Sussex for SoCoBio
