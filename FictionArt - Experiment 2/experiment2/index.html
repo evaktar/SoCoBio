@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Tab Title -->
+    <title>Experiment</title>
+
+    <!-- Load JsPsych Library and Stylesheet -->
+    <script src="https://unpkg.com/jspsych@8.2.2"></script>
+    <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- Plugins -->
+    <!-- Text and Image Plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+    <!-- Preload Media Plugin-->
+    <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
+    <!-- Fullscreen -->
+    <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.1.0"></script>
+    <!-- Browser -->
+    <script src="https://unpkg.com/@jspsych/plugin-browser-check@2.1.0"></script>
+    <!-- Button Plugin -->
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.1.0"></script>
+    <!-- Survey Plugins -->
+    <script src="https://unpkg.com/@jspsych/plugin-survey@3.0.0"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@3.0.0/css/survey.css" />
+    <!--Eye-Tracking-->
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jspsych@jspsych@8.2.2/examples/js/webgazer/webgazer.js"></script>
+    <script src="https://unpkg.com/@jspsych/extension-webgazer@1.2.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-webgazer-init-camera@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-webgazer-calibrate@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-webgazer-validate@2.1.0"></script>
+
+    <!-- Custom Scripts -->
+    <script src="demographics.js"></script>
+    <script src="fiction.js"></script>
+    <!-- Re-use Existing Scripts from Experiment 1-->
+    <script src="./../experiment/stimuli/stimuli_list.js"></script>
+    <script src="./../experiment/demographics.js"></script> 
+    <script src="./../experiment/fiction.js"></script>
+    <script src="./../experiment/eyetracking.js"></script>
+
+  </head>
+
+  <body></body>
+
+  <script>
+    // Initialise experiment (var - global, const - local)
+    var jsPsych = initJsPsych({
+        show_progress_bar: true,
+        message_progress_bar: "Progress",
+        on_finish: function() {
+          jsPsych.data.displayData();
+          //window.location = "https://realitybending.github.io/" // Redirect to lab website
+        },
+        extensions: [{ type: jsPsychExtensionWebgazer }],
+    });
+
+    // Timeline
+    var timeline = [];
+
+    // Participant ID
+    participant_ID = jsPsych.randomization.randomID(10)
+
+    // Demographics ==============================================================
+    timeline.push(welcome, fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2, demographics_questions)
+    // TODO: Re-check if for preloading instead of repeating code in fiction.js, you can use existing code from experiment1
+
+    // Eye-tracking ==============================================================
+    timeline.push(eyetracking_consent, eyetracking_calibration) 
+
+    // Fiction Experiment 2 Stage 1 ==============================================
+    timeline.push(fiction_instructions1_exp2)
+
+    // Phase 1 
+    timeline.push(fiction_phase_exp2(0, midpoint)); // phase 1a - (0, midpoint) - Testing (0,1)
+    //timeline.push(fiction_phase1_break, eyetracking_recalibration); // break and recalibration
+    timeline.push(fiction_phase_exp2(midpoint)); // phase 1b - (midpoint) - Testing (1,2)
+
+    // Exit fullscreen mode
+    timeline.push(fullscreen_off)
+    timeline.push(demographics_endscreen)
+
+    // Run Experiment Timeline
+    jsPsych.run(timeline);
+
+  </script>
+</html>
