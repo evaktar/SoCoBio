@@ -156,14 +156,14 @@ var fiction_ratings1_exp2 = {
                     {
                       type: "radiogroup",
                       name: "Familiarity",
-                      title: "I feel with the artwork, I am . . .",
+                      title: "I would describe my familiarity with this artwork as . . .",
                       isRequired: true,
                       choices: ["Unfamiliar", "Familiar with the style", "Familiar with the artist", "I recognise this specific artwork"],
                     },
                     {
                       type: "slider",
                       name: "Familarity Scale",
-                      title: "This artwork is...",
+                      title: "I feel the artwork is...",
                       isRequired: true,
                       min: -5,
                       max: 5,
@@ -189,7 +189,7 @@ var fiction_ratings1_exp2 = {
                     {
                       type: "radiogroup",
                       name: "Category",
-                      title: "This artwork was in the category...",
+                      title: "In the last experiment, this artwork was in the category...",
                       isRequired: true,
                       choices: ["AI-Generated", "Original", "Human Forgery"],
                       visibleIf: "{Recognition} = 'Yes'",
