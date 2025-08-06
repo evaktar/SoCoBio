@@ -205,7 +205,7 @@ var fiction_ratings1_exp2 = {
     },
 }
 
-// Phase 1a and 1b ===============================================================
+// Phase 1a and 1b Timeline ======================================================
 function fiction_phase_exp2(start, end) {
   return {
     timeline_variables: stimuli.slice(start, end),
