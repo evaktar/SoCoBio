@@ -5,10 +5,9 @@ var fiction_preloadstims_exp2 = {
     images: stimuli_list.map((a) => "./../experiment/stimuli/stimuli/" + a.Item),
     message: "Please wait while the experiment is being loaded (it can take a few minutes)"
 };
-
 // To be able to reuse function for above, have to export in org function - import { shuffleArray as _shuffleArray } from "./../experiment/fiction.js";
 
-// Condition assignment ========================================================
+// Condition assignment ==========================================================
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1))
@@ -25,7 +24,7 @@ color_cues = {
     Forgery: color_cues[2],
 }
 
-// Screens =====================================================================
+// Screens =======================================================================
 const fiction_instructions1_exp2 = {
     type: jsPsychSurvey,
     data: { screen: "fiction_instructions1_exp2" },
@@ -92,6 +91,7 @@ const fiction_instructions1_exp2 = {
     },
 }
 
+// Fixation Cross ================================================================
 var fiction_fixation_exp2_1 = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: "<div style='font-size:500%; position:fixed; text-align: center; top:50%; bottom:50%; right:20%; left:20%'>+</div>",
@@ -103,6 +103,7 @@ var fiction_fixation_exp2_1 = {
     },
 }
 
+// Display Stimuli Images ========================================================
 var fiction_exp2_showimage1 = {
     type: jsPsychImageKeyboardResponse,
     stimulus: function () {
@@ -140,6 +141,7 @@ var fiction_exp2_showimage1 = {
     ],
 }
 
+// Image Ratings and Categorisation ==============================================
 var fiction_ratings1_exp2 = {
     type: jsPsychSurvey,
     survey_json: {
@@ -203,7 +205,7 @@ var fiction_ratings1_exp2 = {
     },
 }
 
-// Phase 1a and 1b 
+// Phase 1a and 1b ===============================================================
 function fiction_phase_exp2(start, end) {
   return {
     timeline_variables: stimuli.slice(start, end),
