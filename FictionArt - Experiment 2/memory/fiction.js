@@ -173,17 +173,18 @@ var fiction_ratings1_exp2 = {
                       type: "slider",
                       name: "Familarity Scale",
                       title: "I feel the artwork is...",
+                      description: "To what extent do you recall seeing this artwork in the previous study?",
                       isRequired: true,
-                      min: -5,
-                      max: 5,
+                      min: -100,
+                      max: 100,
                       step: 1,
                       customLabels: [
                           {
-                              value: -5,
+                              value: -100,
                               text: "Unfamiliar",
                           },
                           {
-                              value: 5,
+                              value: 100,
                               text: "Familiar",
                           },
                       ],
@@ -198,7 +199,7 @@ var fiction_ratings1_exp2 = {
                     {
                       type: "radiogroup",
                       name: "Category",
-                      title: "In the last experiment, this artwork was in the category...",
+                      title: "In the previous study, this artwork was labelled as...",
                       isRequired: true,
                       choices: ["AI-Generated", "Original", "Human Forgery"],
                       visibleIf: "{Recognition} = 'Yes'",
