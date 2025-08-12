@@ -44,8 +44,9 @@ const fiction_instructions1_exp2 = {
     <p>This study stems from a multi-disciplinary collaboration involving neuroscientists and artists from the University of Sussex. 
     Our aim is to understand how we visually explore and retain artworks.</p>
 
-    <p>In the next part, you will be presented with 2 types of images. Images from the last experiment round which were categorised under the 3 following types and some new images you have not seen:</p>
-
+    <p>In the previous study, some images were intentionally mislabelled (i.e., we stated that an artwork was AI-generated or a human forgery when, in reality, all artworks were originals). In this follow-up study, you will be presented with 2 types of images. Images from the last experiment round which were categorised under the 3 following types and some new images you have not seen.</p>
+    <p>As a reminder, artworks were labelled according to the following categories:</p>
+    
     <div style="display: flex; align-items: center; margin-bottom: 20px;">
       <div style="flex: 1;">
         <p><b><li><b style="color: ${color_cues["Human"]}">Original</b> paintings</b>:<br>
