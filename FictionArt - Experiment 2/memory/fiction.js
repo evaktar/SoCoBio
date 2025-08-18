@@ -42,20 +42,13 @@ const fiction_instructions1_exp2 = {
   <h3>What you will see</h3>
   <div style="text-align: left;">
     <p>This study stems from a multi-disciplinary collaboration involving neuroscientists and artists from the University of Sussex. 
-    Our aim is to understand how we visually explore and retain artworks.</p>
+    In this follow-up study, our aim is to understand how we visually explore and retain artworks.</p>
 
-    <p>In the previous study, some images were intentionally mislabelled, for example, we stated that an artwork was AI-generated or a human forgery when, in reality, all artworks were originals.</p>
-    <p>In this follow-up study, you will be presented with two types of images:</p>
-    <ul>
-      <li>Images from the last experiment round</li>
-      <li>New images you have not seen before</li>
-    </ul>
-    <p>As a reminder, artworks were labelled according to the following categories:</p>
+    <p>In the previous study, some images were intentionally mislabelled, for example, we stated that an artwork was AI-generated or a human forgery when, in reality, all artworks were originals.<br>As a reminder, artworks were labelled according to the following categories:</p>
 
-    
     <div style="display: flex; align-items: center; margin-bottom: 20px;">
       <div style="flex: 1;">
-        <p><b><li><b style="color: ${color_cues["Human"]}">Original</b> paintings</b>:<br>
+        <p><li><b style="color: ${color_cues["Human"]}">Original</b>:<br>
           Images of original paintings taken from public artwork databases.</p>
       </div>
       <div style="flex: 1; text-align: center;">
@@ -88,7 +81,15 @@ const fiction_instructions1_exp2 = {
   </div>
 
   <h3>What you need to do</h3>
-  <p>Each image will be briefly presented on the screen. After each image, you will be asked if you <b>recognise the artwork</b> and if you then <b> remember the category it was labelled under</b>. </p>
+  <p>Each image will be briefly presented on the screen. After each image, you will be asked the following questions:</p>
+  <ul>
+    <li><b style="color: #ff8c00ff">Unfamiliar or Familiar?</b> To what extent do you recall seeing the image in the previous study?</li>    
+    <li><b style="color: #a700d5ff">AI-generated or Human-created?</b> In the previous experiment, did you think the image was a Human Creation or AI-Generated? 
+        <b>Drag the slider to reflect how you remember rating it</b>.</li>
+    <li><b style="color: #ff00a6ff">Original or Copy?</b> In the previous experiment, did you think the image was an Original or a Copy / Forgery? 
+    <b>Drag the slider to reflect how you remember rating it</b>.</li>
+    <li><b style="color: #7d380eff">Artwork category</b> Which category (Original/AI-Generated/Human Forgery) was the artwork said to have belonged to in the first phase of the previous study?
+  </ul>               
 
 `,
                     },
@@ -163,13 +164,6 @@ var fiction_ratings1_exp2 = {
             {
                 elements: [
                     {
-                      type: "radiogroup",
-                      name: "Familiarity",
-                      title: "I would describe my familiarity with this artwork as . . .",
-                      isRequired: true,
-                      choices: ["Unfamiliar", "Familiar with the style", "Familiar with the artist", "I recognise this specific artwork"],
-                    },
-                    {
                       type: "slider",
                       name: "Familarity Scale",
                       title: "I feel the artwork is...",
@@ -191,18 +185,64 @@ var fiction_ratings1_exp2 = {
                     },
                     {
                       type: "radiogroup",
-                      name: "Recognition",
-                      title: "Do you recognise this artwork from the last experiment?",
+                      name: "Familiarity",
+                      title: "I would describe my familiarity with this artwork as . . .",
                       isRequired: true,
-                      choices: ["Yes", "No"],
-                  },
+                      choices: ["Unfamiliar", "Familiar with the style", "Familiar with the artist", "I recognise this specific artwork"],
+                    },
                     {
-                      type: "radiogroup",
+                      type: "rating",
                       name: "Category",
                       title: "In the previous study, this artwork was labelled as...",
                       isRequired: true,
-                      choices: ["AI-Generated", "Original", "Human Forgery"],
-                      visibleIf: "{Recognition} = 'Yes'",
+                      // visibleIf: "{Recognition} = 'Yes'",
+                      css_classes: ["colored-scale"],
+                      displayMode: "buttons",
+                      rateValues: [
+                            { value: 0, text: "Original" },
+                            { value: 1, text: "AI-Generated" },
+                            { value: 2, text: "Human Forgery" },
+                      ],
+                    },
+                    {
+                      type: "slider",
+                      name: "Reality",
+                      title: "In the previous study, I thought this artwork was...",
+                      description: "Think back to your original impression of this artwork. Did you think it a human creation or generated by AI? Drag the slider according to reflect how you remember rating it.",
+                      isRequired: true,
+                      min: -100,
+                      max: 100,
+                      step: 1,
+                      customLabels: [
+                          {
+                              value: -100,
+                              text: "AI-Generated",
+                          },
+                          {
+                              value: 100,
+                              text: "Human Creation",
+                          },
+                      ],
+                    },
+                    {
+                      type: "slider",
+                      name: "Authenticity",
+                      title: "In the previous study, I thought this artwork was...",
+                      description: "Think back to your original impression of this artwork. Did you think it was a copy of an existing artwork  or an original? Drag the slider according to reflect how you remember rating it.",
+                      isRequired: true,
+                      min: -100,
+                      max: 100,
+                      step: 1,
+                      customLabels: [
+                          {
+                              value: -100,
+                              text: "Copy / Forgery",
+                          },
+                          {
+                              value: 100,
+                              text: "Original Creation",
+                          },
+                      ],
                     },
                 ],
             },
