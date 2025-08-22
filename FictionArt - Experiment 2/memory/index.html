@@ -34,6 +34,7 @@
     <!-- Custom Scripts -->
     <script src="demographics.js"></script>
     <script src="fiction.js"></script>
+    <script src="./lure/lure_list.js"></script>
     <!-- Re-use Existing Scripts from Experiment 1-->
     <script src="./../experiment/stimuli/stimuli_list.js"></script>
     <script src="./../experiment/demographics.js"></script> 
@@ -61,7 +62,7 @@
     participant_ID = jsPsych.randomization.randomID(10)
 
     // Demographics ==============================================================
-    timeline.push(welcome, fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2, demographics_questions)
+    timeline.push(fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2, demographics_questions)
     // TODO: Re-check if for preloading instead of repeating code in fiction.js, you can use existing code from experiment1
 
     // Eye-tracking ==============================================================
