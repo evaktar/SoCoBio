@@ -211,9 +211,9 @@ var fiction_exp2_showimage1 = {
 var fiction_ratings1_exp2 = {
     type: jsPsychSurvey,
     survey_json: {
-        goNextPageAutomatic: false,
+        goNextPageAutomatic: true,
         showQuestionNumbers: false,
-        showNavigationButtons: true,
+        showNavigationButtons: false,
         title: function () {
             return "Rating - " + Math.round(((fiction_trialnumber - 1) / stimuli.length) * 100) + "%"
         },
