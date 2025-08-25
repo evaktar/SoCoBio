@@ -44,6 +44,7 @@ const fiction_instructions1_exp2 = {
                         html: `
   <h1>Instructions</h1>
   <h3>Part 1/2</h3>
+  <h3>What you did last time</h3>
   <h3>What you will see</h3>
   <div style="text-align: left;">
     <p>This study stems from a multi-disciplinary collaboration involving neuroscientists and artists from the University of Sussex. 

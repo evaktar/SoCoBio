@@ -24,12 +24,6 @@
     <!-- Survey Plugins -->
     <script src="https://unpkg.com/@jspsych/plugin-survey@3.0.0"></script>
     <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@3.0.0/css/survey.css" />
-    <!--Eye-Tracking-->
-    <script src="https://cdn.jsdelivr.net/gh/jspsych/jspsych@jspsych@8.2.2/examples/js/webgazer/webgazer.js"></script>
-    <script src="https://unpkg.com/@jspsych/extension-webgazer@1.2.0"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-webgazer-init-camera@2.1.0"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-webgazer-calibrate@2.1.0"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-webgazer-validate@2.1.0"></script>
 
     <!-- Custom Scripts -->
     <script src="demographics.js"></script>
@@ -39,7 +33,6 @@
     <script src="./../experiment/stimuli/stimuli_list.js"></script>
     <script src="./../experiment/demographics.js"></script> 
     <script src="./../experiment/fiction.js"></script>
-    <script src="./../experiment/eyetracking.js"></script>
 
   </head>
 
@@ -61,12 +54,8 @@
     // Participant ID
     participant_ID = jsPsych.randomization.randomID(10)
 
-    // Demographics ==============================================================
-    timeline.push(fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2, demographics_questions)
-    // TODO: Re-check if for preloading instead of repeating code in fiction.js, you can use existing code from experiment1
-
-    // Eye-tracking ==============================================================
-    timeline.push(eyetracking_consent, eyetracking_calibration) 
+    // Preload ===================================================================
+    timeline.push(fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2)
 
     // Fiction Experiment 2 Stage 1 ==============================================
     timeline.push(fiction_instructions1_exp2)
