@@ -24,6 +24,8 @@
     <!-- Survey Plugins -->
     <script src="https://unpkg.com/@jspsych/plugin-survey@3.0.0"></script>
     <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@3.0.0/css/survey.css" />
+    <!--Eye-Tracking-->
+    <script src="https://unpkg.com/@jspsych/extension-webgazer@1.2.0"></script>
 
     <!-- Custom Scripts -->
     <script src="demographics.js"></script>
@@ -47,22 +49,22 @@
           jsPsych.data.displayData();
           //window.location = "https://realitybending.github.io/" // Redirect to lab website
         },
-        extensions: [{ type: jsPsychExtensionWebgazer }],
     });
     // Timeline
     var timeline = [];
     // Participant ID
     participant_ID = jsPsych.randomization.randomID(10)
 
-    // Preload ===================================================================
-    timeline.push(fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2)
+    // Demographics ==============================================================
+    timeline.push(fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2, demographics_questions)
+    // TODO: Re-check if for preloading instead of repeating code in fiction.js, you can use existing code from experiment1
 
     // Fiction Experiment 2 Stage 1 ==============================================
     timeline.push(fiction_instructions1_exp2)
 
     // Phase 1 
     timeline.push(fiction_phase_exp2(0, midpoint)); // phase 1a - (0, midpoint) - Testing (0,1)
-    timeline.push(fiction_phase1_break, eyetracking_recalibration); // break and recalibration
+    timeline.push(fiction_phase1_break); // break
     timeline.push(fiction_phase_exp2(midpoint)); // phase 1b - (midpoint) - Testing (1,2)
 
     // Exit fullscreen mode ======================================================
