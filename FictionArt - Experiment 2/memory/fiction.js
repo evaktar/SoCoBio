@@ -52,24 +52,26 @@ const fiction_instructions1_exp2 = {
     <div style="display: flex; align-items: center; margin-bottom: 20px; margin-top:30px;">
       <div style="flex: 2;">
         <div style="border: 1px dashed gray;padding-right:15px;">
-          <p>
-            <ul>
-              <b style="color: ${color_cues["Human"]}">Original</b><br>
-              Human-Created Original Artworks
-            </ul>
-          </p>
-          <p>
-            <ul>
-              <b style="color: ${color_cues["AI"]}">AI-Generated</b><br>
-              AI-Generated Artworks
-            </ul>
-          </p>
-          <p>
-            <ul>
-              <b style="color: ${color_cues["Forgery"]}">Human Forgery</b><br>
-              Copies/Forgeries of Human-Created Artworks
-            </ul>
-          </p>
+          <ul style='list-style-type:none;'>
+            <p>
+              <li>
+                <b style="color: ${color_cues["Human"]}">Original</b><br>
+                Human-Created Original Artworks
+              </li>
+            </p>
+            <p>
+              <li>
+                <b style="color: ${color_cues["AI"]}">AI-Generated</b><br>
+                AI-Generated Artworks
+              </li>
+            </p>
+            <p>
+              <li>
+                <b style="color: ${color_cues["Forgery"]}">Human Forgery</b><br>
+                Copies/Forgeries of Human-Created Artworks
+              </li>
+            </p>
+          </ul>
         </div>
         <p style ='color: gray;'>Labels Shown Before Artworks</p>
       </div>
@@ -127,30 +129,22 @@ const fiction_instructions1_exp2 = {
     <h3>Part 2/2</h3>
     <h1>Instructions</h1>
     <h3>What you need to do</h3>
-    <p>Each image will be briefly presented on the screen. After each image, you will be asked the following questions:</p>
+    <p>Each artwork will be briefly re-presented on the screen along with new artworks. After each artwork, you will be asked the following:</p>
     <ul>
       <li>
-        <b style="color: #ff8c00ff">Unfamiliar or Familiar?</b> To what extent do you recall seeing the image in the previous study?
-      </li>    
-      <li>
-          <b style="color: #a700d5ff">AI-Generated or Human-Creation?</b> In the previous experiment, did you think the image was a Human Creation or AI-Generated? 
-          <b>Drag the slider to reflect how you remember rating it</b>.
-          <p>Below is the slider from the previous study:</p>
-          <img src="./media/human_ai.jpg" alt="Study 1 Phase 2 Question Human Creation or AI-Generated" style="width:100%; max-width: 400px;">
-      </li>
-      <li>
-        <b style="color: #ff00a6ff">Original or Copy?</b> In the previous experiment, did you think the image was an Original or a Copy / Forgery? 
-        <b>Drag the slider to reflect how you remember rating it</b>.
-        <p>Below is the slider from the previous study:</p>
-        <img src="./media/original_copy.jpg" alt="Study 1 Phase 2 Question Original or Copy/Forgery" style="width:100%; max-width: 400px;">
-      </li>
-      <li>
-        <b style="color: #7d380eff">Artwork category?</b> 
-        Which category 
+        <b>Assigned Label -</b> 
+        In the previous study, which label was the artwork assigned:
           (<b style="color: ${color_cues["Human"]}">Original</b>/
           <b style="color: ${color_cues["AI"]}">AI-Generated</b>/
-          <b style="color: ${color_cues["Forgery"]}">Human Forgery</b>) 
-        was the artwork said to have belonged to in the first phase of the previous study?
+          <b style="color: ${color_cues["Forgery"]}">Human Forgery</b>)?
+      <img src="./media/guesslabels.jpg" alt="Displayed Label Options" style="width:100%; max-width: 500px;">
+      </li>
+      <br>
+      <li>
+          <b>Guessed Label -</b> In the previous study, which label did you think the artwork belonged to:
+           <br>(Original Human Creation/ Original AI-Generation/ AI-Generated Forgery/ Human Forgery)? 
+           <br>
+          <img src="./media/guesslabels.jpg" alt="Guessed Label Options" style="width:100%; max-width: 500px;">
       </li>
     </ul>     
 `,
@@ -217,9 +211,9 @@ var fiction_exp2_showimage1 = {
 var fiction_ratings1_exp2 = {
     type: jsPsychSurvey,
     survey_json: {
-        goNextPageAutomatic: true,
+        goNextPageAutomatic: false,
         showQuestionNumbers: false,
-        showNavigationButtons: false,
+        showNavigationButtons: true,
         title: function () {
             return "Rating - " + Math.round(((fiction_trialnumber - 1) / stimuli.length) * 100) + "%"
         },
@@ -227,73 +221,6 @@ var fiction_ratings1_exp2 = {
         pages: [
             {
                 elements: [
-                    {
-                      type: "slider",
-                      name: "Familarity Scale",
-                      title: "I feel the artwork is...",
-                      description: "To what extent do you recall seeing this artwork in the previous study?",
-                      isRequired: true,
-                      min: -100,
-                      max: 100,
-                      step: 1,
-                      customLabels: [
-                          {
-                              value: -100,
-                              text: "Unfamiliar",
-                          },
-                          {
-                              value: 100,
-                              text: "Familiar",
-                          },
-                      ],
-                    },
-                    {
-                      type: "radiogroup",
-                      name: "Familiarity",
-                      title: "I would describe my familiarity with this artwork as . . .",
-                      isRequired: true,
-                      choices: ["Unfamiliar", "Familiar with the style", "Familiar with the artist", "I recognise this specific artwork"],
-                    },
-                    {
-                      type: "slider",
-                      name: "Reality",
-                      title: "In the previous study, I thought this artwork was...",
-                      description: "Think back to your original impression of this artwork. Did you think it a human creation or generated by AI? Drag the slider according to reflect how you remember rating it.",
-                      isRequired: true,
-                      min: -100,
-                      max: 100,
-                      step: 1,
-                      customLabels: [
-                          {
-                              value: -100,
-                              text: "AI-Generated",
-                          },
-                          {
-                              value: 100,
-                              text: "Human Creation",
-                          },
-                      ],
-                    },
-                    {
-                      type: "slider",
-                      name: "Authenticity",
-                      title: "In the previous study, I thought this artwork was...",
-                      description: "Think back to your original impression of this artwork. Did you think it was a copy of an existing artwork  or an original? Drag the slider according to reflect how you remember rating it.",
-                      isRequired: true,
-                      min: -100,
-                      max: 100,
-                      step: 1,
-                      customLabels: [
-                          {
-                              value: -100,
-                              text: "Copy / Forgery",
-                          },
-                          {
-                              value: 100,
-                              text: "Original Creation",
-                          },
-                      ],
-                    },
                     {
                       type: "radiogroup",
                       name: "Recognition",
@@ -303,7 +230,7 @@ var fiction_ratings1_exp2 = {
                     },
                     {
                       type: "rating",
-                      name: "Category",
+                      name: "DisplayLabel",
                       title: "In the previous study, this artwork was labelled as...",
                       isRequired: true,
                       visibleIf: "{Recognition} = 'Yes'",
@@ -313,6 +240,22 @@ var fiction_ratings1_exp2 = {
                             { value: 0, text: "Original" },
                             { value: 1, text: "AI-Generated" },
                             { value: 2, text: "Human Forgery" },
+                      ],
+                    },
+                    {
+                      type: "rating",
+                      name: "GuessLabel",
+                      title: "In the previous study, I thought the artwork was...",
+                      isRequired: true,
+                      visibleIf: "{Recognition} = 'Yes'",
+                      css_classes: ["colored-scale"],
+                      displayMode: "buttons",
+                      rateValues: [
+                            { value: 0, text: "Original Human Creation" },
+                            { value: 1, text: "Original AI-Generation" },
+                            { value: 2, text: "AI-Generated Forgery" },
+                            { value: 3, text: "Human Forgery" },
+                            
                       ],
                     },
                 ],
