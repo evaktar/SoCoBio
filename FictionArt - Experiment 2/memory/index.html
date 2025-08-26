@@ -57,7 +57,6 @@
 
     // Demographics ==============================================================
     timeline.push(fullscreen_on, demographics_browser_info, demographics_consent_exp2, fiction_preloadstims_exp2)
-    // TODO: Re-check if for preloading instead of repeating code in fiction.js, you can use existing code from experiment1
 
     // Fiction Experiment 2 Stage 1 ==============================================
     timeline.push(fiction_instructions1_exp2)
@@ -69,6 +68,7 @@
 
     // Exit fullscreen mode ======================================================
     timeline.push(fullscreen_off)
+    timeline.push(debrief)
     timeline.push(demographics_endscreen)
 
     // Run Experiment Timeline

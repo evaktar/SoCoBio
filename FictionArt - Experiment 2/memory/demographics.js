@@ -86,3 +86,47 @@ const demographics_consent_exp2 = {
         }
     },
 }
+
+// Debrief =======================================================================
+const debrief = {
+  type: jsPsychSurvey,
+  data: { screen: "Debrief" },
+  survey_json: {
+    showQuestionNumbers: false,
+    completeText: "Continue",
+    pages: [
+      {
+        elements: [
+          {
+            type: "html",
+            name: "Debrief",
+            html: `
+              <img src="https://blogs.brighton.ac.uk/sussexwrites/files/2019/06/University-of-Sussex-logo-transparent.png" width="150px" align="right" />
+              <br><br><br><br><br>
+              <h3>Debriefing</h3>
+              <p align="left">
+                The purpose of this follow-up study was to investigate 
+                how subjective appraisals of visual art and belief that the content is 
+                fake (AI-generated or forgery) affect memory and source recognition.<br><br>
+                
+                Our hypothesis is that artworks receiving extreme aesthetic ratings or labelled as 
+                AI-generated will elicit higher recognition and source memory accuracy, 
+                especially if strong attitudes are held towards AI.<br><br>
+              </p>
+              <p align="left">
+                <b>Thank you again!</b> Your participation in this study will be kept completely confidential.<br>
+                If you have any questions or concerns about the project, please contact 
+                <a href="mailto:D.Makowski@sussex.ac.uk">D.Makowski@sussex.ac.uk</a> and/or 
+                <a href="mailto:A.Neves@sussex.ac.uk">A.Neves@sussex.ac.uk</a>.
+              </p>
+              <p>
+                To complete your participation in this study, click on 'Continue' and 
+                <b style="color: red;">wait until your responses have been successfully saved</b> before closing the tab.
+              </p>
+            `
+          }
+        ]
+      }
+    ]
+  }
+};
