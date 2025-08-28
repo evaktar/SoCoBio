@@ -171,7 +171,7 @@ var fiction_fixation_exp2_1 = {
 var fiction_exp2_showimage1 = {
     type: jsPsychImageKeyboardResponse,
     stimulus: function () {
-      const path = Math.random() < 0 ? "./lure/lure/" : "./../experiment/stimuli/stimuli/" // 0.5 for half, 0.3 for 30%
+      const path = Math.random() < 0 ? "./lure/lure/" : "./../experiment/stimuli/stimuli/" // 0.3 for 30%, 0 for no lure
       return path + jsPsych.evaluateTimelineVariable("Item")
     },
     stimulus_width: function () {
@@ -190,7 +190,6 @@ var fiction_exp2_showimage1 = {
         return {
             screen: "fiction_exp2_image1",
             item: jsPsych.evaluateTimelineVariable("Item"),
-            //image_type: useLure ? "lure" : "stimuli",
             window_width: window.innerWidth,
             window_height: window.innerHeight,
             trial_number: fiction_trialnumber,
