@@ -267,11 +267,12 @@ var fiction_ratings1_exp2 = {
     },
 }
 
-// Phase 1a and 1b Timeline ======================================================
-function fiction_phase_exp2(start, end) {
+// Break Addition Timeline =======================================================
+function fiction_phase_exp2() { //start, end
   return {
-    timeline_variables: stimuli.slice(start, end),
+    //timeline_variables: stimuli.slice(start, end),
+    timeline_variables: shuffleArray(stimuli),
     timeline: [fiction_fixation_exp2_1, fiction_exp2_showimage1, fiction_ratings1_exp2],
   };
 } 
-var midpoint = Math.ceil(stimuli.length / 2); // Avoid duplicity of stimuli during phase 1a and 1b
+//var midpoint = Math.ceil(stimuli.length / 2); // Avoid duplicity of stimuli during phase 1a and 1b
