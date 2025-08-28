@@ -1,15 +1,3 @@
-// Welcome
-const welcome = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: 'Welcome to the experiment. Press any key to begin.'
-};
-
-// const welcome = {
-//     type: jsPsychHtmlButtonResponse,
-//     stimulus: 'Welcome to the experiment',
-//     choices: ['Begin']
-// };
-
 // Consent form ========================================================
 const demographics_consent_exp2 = {
     type: jsPsychSurvey,
